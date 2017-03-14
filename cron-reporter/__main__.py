@@ -18,7 +18,7 @@ proc = subprocess.Popen(
     stdout=subprocess.PIPE,
     stderr=subprocess.STDOUT,
 )
-proc.wait()
+stdout, _ = proc.communicate()
 if proc.returncode != 0:
-    print(proc.stdout.read().decode('utf-8'), end='')
+    print(stdout.decode('utf-8'), end='')
     sys.exit(proc.returncode)
