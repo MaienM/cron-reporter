@@ -12,12 +12,13 @@ parser.add_argument('command', nargs='+', help='the command to run')
 args = parser.parse_args()
 
 # Run the command
-result = subprocess.Popen(
+proc = subprocess.Popen(
     args.command,
     shell=True,
     stdout=subprocess.PIPE,
     stderr=subprocess.STDOUT,
 )
-if result.returncode != 0:
-    print(result.stdout.read().decode('utf-8'), end='')
-    sys.exit(result.returncode)
+proc.wait()
+if proc.returncode != 0:
+    print(proc.stdout.read().decode('utf-8'), end='')
+    sys.exit(proc.returncode)
