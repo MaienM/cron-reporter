@@ -40,7 +40,6 @@ parser.add_argument(
 
 # Parse the arguments
 args = parser.parse_args()
-print(args)
 
 # Lockfile
 if args.lock:
